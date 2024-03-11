@@ -67,6 +67,17 @@ position = Vector2(-4, 599)
 position = Vector2(1160, 0)
 shape = SubResource("RectangleShape2D_1dnar")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 229.0
+offset_bottom = 182.0
+theme_override_font_sizes/font_size = 30
+text = "		1 - Czerwony
+		2 - Zielony 
+		3 - Niebieski
+		4 - Fioletowy "
+
 [connection signal="area_shape_entered" from="Basket" to="Basket" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Basket" to="Basket" method="_on_area_shape_exited"]
 [connection signal="timeout" from="FruitNode/FruitTimer" to="FruitNode" method="_on_fruit_timer_timeout"]

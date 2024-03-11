@@ -11,7 +11,7 @@ func _ready():
 		1: $FruitSprite.modulate = Color.GREEN;
 		2: $FruitSprite.modulate = Color.BLUE;
 		3: $FruitSprite.modulate = Color.PURPLE;
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -21,8 +21,7 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 	match area.name :
 		"Basket": what = 0; #Kolizja z koszykiem (graczem)
 		"Floor": what = 1; #Kolizja z podłogą (gracz nie zdążył)
-	
+	SignalManager.fruitColor.emit(color);
 	SignalManager.fruitColl.emit(what);
 	queue_free();
-	#print(area.name)
 
