@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://8ht3543k8u8l"]
+
+[ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_w5xul"]
+[ext_resource type="Script" path="res://Scripts/FruitNode.gd" id="2_ebjhj"]
+[ext_resource type="Script" path="res://Scripts/Score.gd" id="3_efxh8"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_meeli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6epj"]
+size = Vector2(202, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igrkt"]
+size = Vector2(1164, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2bv0"]
+size = Vector2(12, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dnar"]
+size = Vector2(10, 84)
+
+[node name="World" type="Node2D"]
+
+[node name="Basket" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+collision_priority = 2.0
+script = ExtResource("1_w5xul")
+
+[node name="BasketPicture" type="Sprite2D" parent="Basket"]
+position = Vector2(562, 633)
+scale = Vector2(202, 16.75)
+texture = SubResource("CanvasTexture_meeli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket"]
+position = Vector2(562, 633.5)
+shape = SubResource("RectangleShape2D_g6epj")
+
+[node name="FruitNode" type="Node2D" parent="."]
+script = ExtResource("2_ebjhj")
+
+[node name="FruitTimer" type="Timer" parent="FruitNode"]
+
+[node name="Floor" type="Area2D" parent="."]
+
+[node name="FloorShape" type="CollisionShape2D" parent="Floor"]
+position = Vector2(572, 649)
+shape = SubResource("RectangleShape2D_igrkt")
+
+[node name="Score" type="Node2D" parent="."]
+script = ExtResource("3_efxh8")
+
+[node name="Label" type="Label" parent="Score"]
+offset_left = 942.0
+offset_right = 1153.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+
+[node name="Left" type="Area2D" parent="."]
+
+[node name="Left2" type="CollisionShape2D" parent="Left"]
+position = Vector2(-4, 599)
+shape = SubResource("RectangleShape2D_j2bv0")
+
+[node name="Right" type="Area2D" parent="."]
+position = Vector2(-4, 599)
+
+[node name="Right2" type="CollisionShape2D" parent="Right"]
+position = Vector2(1160, 0)
+shape = SubResource("RectangleShape2D_1dnar")
+
+[connection signal="area_shape_entered" from="Basket" to="Basket" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Basket" to="Basket" method="_on_area_shape_exited"]
+[connection signal="timeout" from="FruitNode/FruitTimer" to="FruitNode" method="_on_fruit_timer_timeout"]
