@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_w5xul"]
 [ext_resource type="Script" path="res://Scripts/FruitNode.gd" id="2_ebjhj"]
-[ext_resource type="Script" path="res://Scripts/Score.gd" id="3_efxh8"]
+[ext_resource type="Script" path="res://Scripts/Text.gd" id="3_efxh8"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_meeli"]
 
@@ -45,14 +45,40 @@ script = ExtResource("2_ebjhj")
 position = Vector2(572, 649)
 shape = SubResource("RectangleShape2D_igrkt")
 
-[node name="Score" type="Node2D" parent="."]
+[node name="Text" type="Node2D" parent="."]
 script = ExtResource("3_efxh8")
 
-[node name="Label" type="Label" parent="Score"]
-offset_left = 942.0
-offset_right = 1153.0
-offset_bottom = 23.0
+[node name="Instruction" type="Label" parent="Text"]
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 225.0
+offset_bottom = 182.0
 theme_override_font_sizes/font_size = 20
+text = "		1 - Czerwony
+		2 - Zielony 
+		3 - Niebieski
+		4 - Fioletowy "
+
+[node name="Score" type="Label" parent="Text"]
+offset_left = 1058.0
+offset_right = 1153.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 20
+
+[node name="Lives" type="Label" parent="Text"]
+offset_left = 1059.0
+offset_top = 31.0
+offset_right = 1149.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 20
+
+[node name="LoseText" type="Label" parent="Text"]
+offset_left = 327.0
+offset_top = 243.0
+offset_right = 852.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
 
 [node name="Left" type="Area2D" parent="."]
 
@@ -66,17 +92,6 @@ position = Vector2(-4, 599)
 [node name="Right2" type="CollisionShape2D" parent="Right"]
 position = Vector2(1160, 0)
 shape = SubResource("RectangleShape2D_1dnar")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 229.0
-offset_bottom = 182.0
-theme_override_font_sizes/font_size = 30
-text = "		1 - Czerwony
-		2 - Zielony 
-		3 - Niebieski
-		4 - Fioletowy "
 
 [connection signal="area_shape_entered" from="Basket" to="Basket" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Basket" to="Basket" method="_on_area_shape_exited"]
