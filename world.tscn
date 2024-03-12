@@ -1,13 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://8ht3543k8u8l"]
+[gd_scene load_steps=10 format=3 uid="uid://8ht3543k8u8l"]
 
 [ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_w5xul"]
 [ext_resource type="Script" path="res://Scripts/FruitNode.gd" id="2_ebjhj"]
+[ext_resource type="Texture2D" uid="uid://ct7s80l4i6igh" path="res://Images/basket.png" id="2_nux0b"]
 [ext_resource type="Script" path="res://Scripts/Text.gd" id="3_efxh8"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_meeli"]
+[ext_resource type="Texture2D" uid="uid://cu38aqp5mo2e6" path="res://Images/backgroung.jpg" id="5_efxct"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6epj"]
-size = Vector2(202, 17)
+size = Vector2(169.219, 15.9297)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igrkt"]
 size = Vector2(1164, 13)
@@ -21,18 +21,28 @@ size = Vector2(10, 84)
 [node name="World" type="Node2D"]
 
 [node name="Basket" type="Area2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-1, 19)
+scale = Vector2(1.01644, 0.878859)
 collision_priority = 2.0
 script = ExtResource("1_w5xul")
+metadata/_edit_group_ = true
 
 [node name="BasketPicture" type="Sprite2D" parent="Basket"]
 position = Vector2(562, 633)
-scale = Vector2(202, 16.75)
-texture = SubResource("CanvasTexture_meeli")
+texture = ExtResource("2_nux0b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Basket"]
-position = Vector2(562, 633.5)
+position = Vector2(561.767, 618.984)
 shape = SubResource("RectangleShape2D_g6epj")
+
+[node name="Label" type="Label" parent="Basket"]
+offset_left = 494.0
+offset_top = 643.0
+offset_right = 629.0
+offset_bottom = 694.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
 
 [node name="FruitNode" type="Node2D" parent="."]
 script = ExtResource("2_ebjhj")
@@ -49,20 +59,22 @@ shape = SubResource("RectangleShape2D_igrkt")
 script = ExtResource("3_efxh8")
 
 [node name="Instruction" type="Label" parent="Text"]
-offset_left = -2.0
-offset_top = 2.0
-offset_right = 225.0
-offset_bottom = 182.0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 442.0
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "		1 - Czerwony
-		2 - Zielony 
-		3 - Niebieski
-		4 - Fioletowy "
+text = "		1 - Liczby zmiennoprzecinkowe (float, double)
+		2 - Liczby całkowite (int)
+		3 - Łańcuch znaków (string)
+		4 - Znak (char)"
 
 [node name="Score" type="Label" parent="Text"]
 offset_left = 1058.0
 offset_right = 1153.0
 offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 
 [node name="Lives" type="Label" parent="Text"]
@@ -70,13 +82,15 @@ offset_left = 1059.0
 offset_top = 31.0
 offset_right = 1149.0
 offset_bottom = 59.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 
 [node name="LoseText" type="Label" parent="Text"]
-offset_left = 327.0
-offset_top = 243.0
-offset_right = 852.0
-offset_bottom = 356.0
+offset_left = 307.0
+offset_top = 238.0
+offset_right = 832.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 horizontal_alignment = 1
 
@@ -92,6 +106,12 @@ position = Vector2(-4, 599)
 [node name="Right2" type="CollisionShape2D" parent="Right"]
 position = Vector2(1160, 0)
 shape = SubResource("RectangleShape2D_1dnar")
+
+[node name="Backgroung" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(570.075, 319.75)
+scale = Vector2(0.664962, 0.680417)
+texture = ExtResource("5_efxct")
 
 [connection signal="area_shape_entered" from="Basket" to="Basket" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Basket" to="Basket" method="_on_area_shape_exited"]

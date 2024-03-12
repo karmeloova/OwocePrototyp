@@ -4,6 +4,8 @@ var color = 0;
 var isCollLeft = false
 var isCollRight = false
 
+var baskets = [load("res://Images/basket.png"), load("res://Images/basket2.png"), load("res://Images/basket3.png"), load("res://Images/basket4.png")]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -17,10 +19,18 @@ func _process(delta):
 		if(isCollRight) : isCollRight = false; #warunek, który mówi o tym, że dotknęliśmy ściany i skoro chcemy poruszać się w drugą stronę to musimy uaktywnić opcje poruszania się
 	
 	match color:
-		0: $BasketPicture.modulate = Color.RED;
-		1: $BasketPicture.modulate = Color.GREEN;
-		2: $BasketPicture.modulate = Color.BLUE;
-		3: $BasketPicture.modulate = Color.PURPLE;
+		0: 
+			$BasketPicture.texture = baskets[0]
+			$Label.text = "float, double"
+		1: 
+			$BasketPicture.texture = baskets[1]
+			$Label.text = "int"
+		2: 
+			$BasketPicture.texture = baskets[2]
+			$Label.text = "string"
+		3: 
+			$BasketPicture.texture = baskets[3]
+			$Label.text = "Char"
 
 
 func _input(event):

@@ -14,12 +14,18 @@ script = ExtResource("1_xr0fs")
 
 [node name="FruitSprite" type="Sprite2D" parent="."]
 position = Vector2(36.125, 16.125)
-scale = Vector2(11.75, 11.75)
 texture = SubResource("CanvasTexture_bnqk3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36, 16)
 shape = SubResource("RectangleShape2D_o5fdm")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.976818, 0.923894)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
